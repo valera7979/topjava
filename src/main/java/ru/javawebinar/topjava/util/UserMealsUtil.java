@@ -42,8 +42,7 @@ public class UserMealsUtil {
         }
         List<UserMealWithExceed> userMealWithExceeds = new ArrayList<>();
         for (UserMeal userMeal : mealList) {
-            if (userMeal.getDateTime().toLocalTime().isAfter(startTime) &&
-                    userMeal.getDateTime().toLocalTime().isBefore(endTime)) {
+            if (TimeUtil.isBetween(userMeal.getDateTime().toLocalTime(), startTime, endTime)) {
                 int totalCalories = datesAndCalories.get(userMeal.getDateTime().toLocalDate());
                 boolean isCaloriesExceeded = totalCalories > caloriesPerDay;
 
